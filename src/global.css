@@ -1,0 +1,105 @@
+:root {
+  --transition: all 0.3s linear;
+  --nav-height: 61px;
+  --min-footer-height: 11vh;
+  --card-height: 29rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.section {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: var(--nav-height) 0;
+}
+
+.link-icons {
+  line-height: 0;
+  font-size: 2.25rem;
+  transition: var(--transition);
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .link-icons {
+    font-size: 2.5rem;
+  }
+}
+
+/*
+ * View Transitions (React 19 <ViewTransition>).
+ * The default browser cross-fade is kept, only the durations are tuned.
+ */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+@keyframes view-enter-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes view-exit-fade {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes view-enter-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+}
+
+::view-transition-old(vt-app) {
+  animation: view-exit-fade 180ms ease both;
+}
+
+::view-transition-new(vt-app) {
+  animation: view-enter-fade 240ms ease-out both;
+}
+
+::view-transition-old(vt-card) {
+  animation: view-exit-fade 160ms ease both;
+}
+
+::view-transition-new(vt-card) {
+  animation: view-enter-up 280ms ease-out both;
+}
+
+::view-transition-old(vt-contact) {
+  animation: view-exit-fade 160ms ease both;
+}
+
+::view-transition-new(vt-contact) {
+  animation: view-enter-up 280ms ease-out both;
+}
