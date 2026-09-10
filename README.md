@@ -1,129 +1,137 @@
-# A React Portfolio Template for GitHub
+# Portfolio – React
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/mshuber1981/github-react-portfolio-template?color=%2361dbfb&style=for-the-badge&logo=github)](https://github.com/mshuber1981/github-react-portfolio-template/stargazers/) [![GitHub Repo Forks](https://img.shields.io/github/forks/mshuber1981/github-react-portfolio-template?color=%2361dbfb&style=for-the-badge&logo=github&label=Forks)](https://github.com/mshuber1981/github-react-portfolio-template/network/members)
+A modern, single-page portfolio built with **React 19** and **TypeScript**. It loads your GitHub profile and repositories automatically from the [GitHub REST API](https://docs.github.com/en/rest) and renders them with smooth view transitions and a full light/dark theme.
 
-A performant, accessible, progressive React portfolio template that uses the [GitHub REST API](https://docs.github.com/en/free-pro-team@latest/rest).
+Deployed on GitHub Pages: [https://nassim33.github.io/portfolio-react/](https://nassim33.github.io/portfolio-react/)
 
-Add your GitHub username once and all of your info will automatically be updated. Deploy to GitHub pages in a few simple steps.
+---
 
-## [Live Demo](https://mshuber1981.github.io/github-react-portfolio-template/#/)
+## Technologies
 
-[Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/)
+| Layer | Choice |
+| --- | --- |
+| Framework | [React](https://react.dev/) 19.3 |
+| Language | [TypeScript](https://www.typescriptlang.org/) (strict) |
+| Build tool | [Vite](https://vitejs.dev/) 5 |
+| UI library | [Ant Design](https://ant.design/) 6 (tokens-based theming) |
+| Icons | [Iconify](https://iconify.design/) (`@iconify/react`) + Ant Design icons |
+| Data fetching | [TanStack Query](https://tanstack.com/query) 5 |
+| State management | [Zustand](https://github.com/pmndrs/zustand) 5 |
+| Validation | [Zod](https://zod.dev/) |
+| Routing | [React Router](https://reactrouter.com/) 6 (`HashRouter`) |
+| Scrolling | [react-scroll](https://www.npmjs.com/package/react-scroll) |
+| Animations | React 19 [`<ViewTransition>`](https://react.dev/reference/react/ViewTransition) |
+| Caching | Workbox (service worker) |
+| Testing | Jest + ts-jest |
+| Linting / types | ESLint (typescript-eslint, react-hooks) + `tsc` |
 
-![Page Speed](/README_images/speed.png)
+Package manager: [pnpm](https://pnpm.io/).
 
-## Light And Dark Themes
+---
 
-![Hero Light](/README_images/hero.png)
+## Getting started
 
-![Hero Dark](/README_images/heroDark.png)
+Requirements: **Node.js ≥ 20**.
 
-### Getting Started
+```bash
+# 1. Install dependencies
+pnpm install
 
-1. [Create a repository from this template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
-2. [Clone your repository](https://developers.google.com/speed/pagespeed/insights/)
-3. Make sure [Node](https://nodejs.org/en/) is installed
-4. Open your project and install the dependencies
+# 2. Start the development server (default http://localhost:3000)
+pnpm start
 
-   ```bash
-   npm install
-   ```
+# 3. Production build (type-checks first) -> dist/
+pnpm build
 
-5. Navigate to the src directory and open data.js
-6. Add your GitHub username ([data.js](https://github.com/mshuber1981/github-react-portfolio-template/blob/main/src/data.js#L17) lines 17-21)
+# 4. Preview the production build locally
+pnpm preview
+```
 
-   ```javascript
-   /* START HERE
-   ************************************************************** 
-     Add your GitHub username (string - "YourUsername") below.
-   */
-   export const githubUsername = "Your GitHub username here";
-   ```
+> The dev server port is set in `vite.config.mjs` (`server.port = 3000`).
 
-7. Start the development server to view the results
+### Other useful commands
 
-   ```bash
-   npm start
-   ```
+```bash
+pnpm test        # run the Jest test suite
+pnpm coverage    # run tests with coverage
+pnpm lint        # ESLint on src/, zero warnings allowed
+pnpm typecheck   # tsc --noEmit
+```
 
-### Updating the Projects section
+---
 
-![Projects](/README_images/projects.png)
+## Customization
 
-1. Follow the instructions to update the filteredProjects array ([data.js](https://github.com/mshuber1981/github-react-portfolio-template/blob/main/src/data.js#L91) lines 91-95)
+Almost everything is configured from a single file: **`src/data.tsx`**. Colors and typography live in **`src/theme.ts`**.
 
-   ```javascript
-   /* Projects
-   ************************************************************** 
-     List the repo names (string - "your-repo-name") you want to include (they will be sorted alphabetically). If empty, only the first 3 will be included.
-   */
-   export const filteredProjects = ["example-1", "example-2", "example-3"];
-   ```
+### Profile & content
 
-2. Import the projects images you want to use ([data.js](https://github.com/mshuber1981/github-react-portfolio-template/blob/main/src/data.js#L7) lines 7-8) or the default image will be applied
+| Setting | Location | Description |
+| --- | --- | --- |
+| GitHub username | `data.tsx` → `githubUsername` | Your username. Profile and repositories are fetched from it. |
+| LinkedIn | `data.tsx` → `linkedinUrl` | Shown as a social link under the hero. |
+| Hero tagline | `data.tsx` → `heroTagline` | Text under your name; line breaks by `\|` separators. |
+| About paragraph | `data.tsx` → `moreInfo` | Extra paragraph in the About Me section. |
+| Blog link icon | `data.tsx` → `Blog` | Icon rendered next to the social links. |
+| Resume | `data.tsx` → `resume` | Set a URL to display the Résumé button in Skills. |
+| Contact endpoint | `data.tsx` → `formspreeUrl` | [Formspree](https://formspree.io/) form endpoint used by the contact form. |
 
-   ```javascript
-   // Projects Images (add your images to the images directory and import below)
-   import Logo from "./images/logo.svg";
-   ```
+### Skills
 
-3. Follow the instructions to update the projectCardImages array ([data.js](https://github.com/mshuber1981/github-react-portfolio-template/blob/main/src/data.js#L97) lines 97-103)
+`data.tsx` → `skillData`. Each entry is `{ id, skill, name }`, where `skill` is an Iconify icon (e.g. `mdi:language-typescript`). Find icons at [icon-sets.iconify.design](https://icon-sets.iconify.design).
 
-   ```javascript
-   // Replace the defualt GitHub image for matching repos below (images imported above - lines 7-8)
-   export const projectCardImages = [
-     {
-       name: "example-1",
-       image: Logo,
-     },
-   ];
-   ```
+### Featured projects
 
-### Updating the Contact section
+`data.tsx` → `filteredProjects` lists the repository names featured on the home page (sorted alphabetically). If empty, the first three repositories are used.
 
-![Projects](/README_images/contact.png)
+`data.tsx` → `projectCardImages` overrides the default GitHub image (located in `public/GH.png`) for matching repositories:
 
-1. The contact form uses [Formspree](https://formspree.io/), create an account and add your endpoint URL ([data.js](https://github.com/mshuber1981/github-react-portfolio-template/blob/main/src/data.js#L105) lines 105-110)
+```ts
+export const projectCardImages = [
+  { name: "my-repo", image: logo },
+];
+```
 
-   ```javascript
-   /* Contact Info
-   ************************************************************** 
-     Add your formspree endpoint below.
-     https://formspree.io/
-   */
-   export const formspreeUrl = "https://formspree.io/f/YourEndpoint";
-   ```
+### Images & branding
 
-### Deploy
+| Asset | Location |
+| --- | --- |
+| Hero background (light / dark) | `src/ui/assets/hero-light.jpg`, `src/ui/assets/hero-dark.jpg` |
+| Logo SVG | `src/ui/assets/logo.svg` |
+| Navbar logo | `src/ui/components/defaultNavLogo.svg` |
+| PWA / static assets | `public/` (favicon.ico, logo192.png, manifest.json, GH.png…) |
 
-A helpful guide for Create React App deployments with GitHub Pages can be found [here](https://create-react-app.dev/docs/deployment#github-pages).
+### Theme
 
-1. Update the homepage value ([package.json](https://github.com/mshuber1981/github-react-portfolio-template/blob/0133fcc02ab048fefcf73825d02385ffe27c3721/package.json#L3) line 3)
+`src/theme.ts` defines the Ant Design light and dark token sets:
 
-   ```json
-   "homepage": "https://YourUsername.github.io/your-app/",
-   ```
+- Brand color: `colorPrimary` — teal `#0D9488` (light) / `#2DD4BF` (dark)
+- Backgrounds: `colorBgContainer`, `colorBgLayout`
+- Text: `colorText`, `colorTextSecondary`
+- Borders: `colorBorder`, `colorBorderSecondary`
+- Font: Space Grotesk (loaded in `index.html`, declared in `sharedTokens.fontFamily`)
 
-2. Run the deploy command
+The theme follows the OS color scheme by default, with a manual toggle that persists in `localStorage`.
 
-   ```bash
-   npm run deploy
-   ```
+---
 
-### Customization Options
+## How it works
 
-Checkout the [Wiki](https://github.com/mshuber1981/github-react-portfolio-template/wiki) for additional customization options:
+- `src/hooks/useGitHubData.ts` uses TanStack Query to fetch `GET /users/:username` and `GET /users/:username/repos` (`per_page=100`, see `src/lib/github.ts`). Responses are validated with Zod (`src/schemas.ts`).
+- `src/App.tsx` hosts the router, theme provider and a `<ViewTransition>` wrapper — theme changes and route navigations cross-fade through the browser View Transitions API.
+- Routes: `/` (Home) and `/All-Projects` (full repository list with search, filtering and pagination).
 
-- [Updating the Hero images](https://github.com/mshuber1981/github-react-portfolio-template/wiki/Updating-the-Hero-images)
-- [Add a custom Blog icon](https://github.com/mshuber1981/github-react-portfolio-template/wiki/Updating-the-Hero-images#add-a-custom-blog-icon)
-- [Updating the About Me section](https://github.com/mshuber1981/github-react-portfolio-template/wiki/Updating-the-About-Me-section)
-- [Updating the Skills section](https://github.com/mshuber1981/github-react-portfolio-template/wiki/Updating-the-Skills-section)
-- [Add a link to your resume](https://github.com/mshuber1981/github-react-portfolio-template/wiki/Updating-the-Skills-section#add-a-link-to-your-resume)
-- [Updating the Navbar Logo](https://github.com/mshuber1981/github-react-portfolio-template/wiki/Updating-the-Navbar-Logo)
-- [Including a Live Demo link on your project cards](https://github.com/mshuber1981/github-react-portfolio-template/wiki/Including-a-Live-Demo-link-on-your-project-cards)
+## Deploy to GitHub Pages
 
-[Back to top :top:](#a-react-portfolio-template-for-github)
+```bash
+pnpm build
+npx gh-pages -d dist
+```
 
-### License
+`base: "./"` is already set in `vite.config.mjs` and `homepage` in `package.json` so the build works from a repository sub-path.
 
-[MIT](https://choosealicense.com/licenses/mit/)
+---
+
+## License
+
+[MIT](License.md)
