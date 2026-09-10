@@ -3,6 +3,13 @@
   "homepage": "https://nassim33.github.io/portfolio-react/",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": "24.x"
+  },
+  "volta": {
+    "node": "24.20.0"
+  },
   "dependencies": {
     "@ant-design/cssinjs": "^2.1.2",
     "@ant-design/icons": "^6.3.4",
