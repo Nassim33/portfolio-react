@@ -12,8 +12,8 @@ export default function Footer() {
       justify="center"
       style={{
         minHeight: "var(--min-footer-height)",
-        background: isDark ? "#121214" : token.colorBgContainer,
-        borderTop: `1px solid ${isDark ? "#27272A" : token.colorBorderSecondary}`,
+        background: isDark ? token.colorBgLayout : token.colorBgContainer,
+        borderTop: `1px solid ${token.colorBorderSecondary}`,
         padding: "0.5rem",
       }}
     >

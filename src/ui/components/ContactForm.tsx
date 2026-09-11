@@ -1,7 +1,6 @@
 import React, { ViewTransition, startTransition } from "react";
 import { Alert, Button, Form, Input, Flex } from "antd";
 import { formspreeUrl } from "../../data";
-import { contactFormSchema } from "../../schemas";
 import type { ContactFormData } from "../../schemas";
 
 type SendStatus = "idle" | "sending" | "success" | "error";
@@ -24,28 +23,14 @@ export default function ContactForm() {
     });
   }
 
-  async function handleSubmit(values: Record<string, string>) {
+  async function handleSubmit(values: ContactFormData) {
     if (sendStatus === "sending") return;
 
     setSendStatus("idle");
 
-    const result = contactFormSchema.safeParse({
-      name: values.name,
-      email: values.email,
-      message: values.message,
-    });
-
-    if (!result.success) {
-      setErrorMessage(
-        result.error.issues.map((issue) => issue.message).join(" ")
-      );
-      setSendStatus("error");
-      return;
-    }
-
     setSendStatus("sending");
     try {
-      const response = await postData(result.data);
+      const response = await postData(values);
       if (!response.ok) {
         throw new Error(
           `${response.status} ${response.statusText}, check formspreeUrl in data`

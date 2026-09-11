@@ -2,7 +2,7 @@ import { Link as ScrollLink } from "react-scroll";
 import { useLocation } from "react-router-dom";
 import { Drawer, Switch, theme } from "antd";
 import { MenuOutlined, SunOutlined, MoonOutlined } from "@ant-design/icons";
-import Logo from "./defaultNavLogo.svg";
+import defaultNavLogo from "./defaultNavLogo.svg";
 import { useUiStore } from "../../stores/useUiStore";
 import TransitionLink from "./TransitionLink";
 
@@ -150,7 +150,7 @@ function MobileDrawer() {
   );
 }
 
-export default function NavBar({ Logo: logo = Logo }: { Logo?: string }) {
+export default function NavBar() {
   const closeExpanded = useUiStore((s) => s.closeExpanded);
   const toggleExpanded = useUiStore((s) => s.toggleExpanded);
   const { token } = theme.useToken();
@@ -184,7 +184,7 @@ export default function NavBar({ Logo: logo = Logo }: { Logo?: string }) {
         >
           <img
             alt="Logo"
-            src={logo}
+            src={defaultNavLogo}
             width="35"
             height="35"
             style={{

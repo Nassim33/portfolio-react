@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { loadPersistedTheme, savePersistedTheme } from "../lib/storage";
-import type { Theme } from "../theme";
+import type { Theme } from "../schemas";
 
 function systemTheme(): Theme {
   return window.matchMedia("(prefers-color-scheme: dark)").matches

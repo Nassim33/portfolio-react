@@ -12,10 +12,6 @@ export const linkedinUrl: string = "https://www.linkedin.com/in/sami-saigaud";
 export const heroTagline: string =
   "Senior Frontend Developer | React · TypeScript · JavaScript | Architecture Frontend · Applications Web · UI/UX";
 
-export const navLogo: string | undefined = undefined;
-
-export const Blog = <Icon icon="ph:link-bold" />;
-
 export const moreInfo: string =
   "I create dynamic websites and web applications, using the latest technology and best web practices.";
 

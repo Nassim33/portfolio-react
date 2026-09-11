@@ -31,7 +31,7 @@ export default tseslint.config(
   {
     files: ["src/service-worker.js", "src/serviceWorkerRegistration.js"],
     languageOptions: {
-      globals: { ...globals.browser, ...globals.worker, process: "readonly" },
+      globals: { ...globals.browser, ...globals.worker },
     },
   }
 );

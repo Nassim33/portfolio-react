@@ -9,7 +9,11 @@ async function fetchJson(url: string): Promise<unknown> {
       `GitHub API error ${response.status}, check username in data.tsx (currently ${githubUsername})`
     );
   }
-  return response.json();
+  try {
+    return await response.json();
+  } catch {
+    throw new Error(`GitHub API returned an invalid JSON response for ${url}`);
+  }
 }
 
 export async function fetchGitHubUser(): Promise<GitHubUser> {

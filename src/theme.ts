@@ -1,7 +1,4 @@
 import { theme } from "antd";
-import type { Theme } from "./schemas";
-
-export type { Theme };
 
 const sharedTokens = {
   colorPrimary: "#0D9488",
@@ -37,5 +34,3 @@ export const antTheme = {
     },
   },
 } as const;
-
-export type AntThemeKey = Theme;

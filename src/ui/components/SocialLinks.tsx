@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { Blog, githubUsername, linkedinUrl } from "../../data";
+import { githubUsername, linkedinUrl } from "../../data";
 import { useGitHubUser } from "../../hooks/useGitHubData";
 import { Flex } from "antd";
 
@@ -27,8 +27,8 @@ export default function SocialLinks() {
         </a>
       )}
       {blog ? (
-        <a href={blog} aria-label="External link" className="link-icons">
-          {Blog}
+        <a href={blog} aria-label="Visit my personal blog." className="link-icons">
+          <Icon icon="ph:link-bold" />
         </a>
       ) : null}
     </Flex>
