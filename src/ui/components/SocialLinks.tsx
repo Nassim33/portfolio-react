@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 import { githubUsername, linkedinUrl } from "../../data";
 import { useGitHubUser } from "../../hooks/useGitHubData";
-import { Flex } from "antd";
+import { Flex, Typography } from "antd";
 
 export default function SocialLinks() {
   const { data: user } = useGitHubUser();
@@ -10,26 +10,30 @@ export default function SocialLinks() {
 
   return (
     <Flex gap={16} align="center">
-      <a
+      <Typography.Link
         href={htmlUrl}
         aria-label="Check out my GitHub profile."
         className="link-icons"
       >
         <Icon icon="icomoon-free:github" />
-      </a>
+      </Typography.Link>
       {linkedinUrl && (
-        <a
+        <Typography.Link
           href={linkedinUrl}
           aria-label="Check out my LinkedIn profile."
           className="link-icons"
         >
           <Icon icon="mdi:linkedin" />
-        </a>
+        </Typography.Link>
       )}
       {blog ? (
-        <a href={blog} aria-label="Visit my personal blog." className="link-icons">
+        <Typography.Link
+          href={blog}
+          aria-label="Visit my personal blog."
+          className="link-icons"
+        >
           <Icon icon="ph:link-bold" />
-        </a>
+        </Typography.Link>
       ) : null}
     </Flex>
   );

@@ -1,6 +1,6 @@
 import React, { ViewTransition, useDeferredValue, startTransition } from "react";
 import { Icon } from "@iconify/react";
-import { Flex, Input, Pagination, Spin, Typography, Grid, theme } from "antd";
+import { Flex, Grid, Input, Pagination, Space, Spin, Typography, theme } from "antd";
 import { BackToTop, Title } from "../components/globalStyledComponents";
 import StyledCard from "../components/StyledCard";
 import Footer from "../components/Footer";
@@ -93,7 +93,7 @@ export default function AllProjects() {
               name={`project-${project.id}`}
               default="vt-card"
             >
-              <div
+              <Space
                 style={{
                   width: screens.lg ? "31%" : screens.md ? "47%" : "100%",
                   minWidth: 280,
@@ -106,7 +106,7 @@ export default function AllProjects() {
                   url={project.html_url}
                   demo={project.homepage}
                 />
-              </div>
+              </Space>
             </ViewTransition>
           ))}
         </Flex>

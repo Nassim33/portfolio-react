@@ -1,21 +1,26 @@
 import React from "react";
 import { Link } from "react-scroll";
 import { Icon } from "@iconify/react";
-import { theme } from "antd";
+import { Space, Typography, theme } from "antd";
 
 export function Title({ children }: { children: React.ReactNode }) {
   const { token } = theme.useToken();
 
   return (
-    <div
+    <Space
+      vertical
+      size={0}
       style={{
+        display: "flex",
         marginBottom: "2.5rem",
         width: "100%",
         maxWidth: 1200,
       }}
     >
-      <h2
+      <Typography.Title
+        level={2}
         style={{
+          margin: 0,
           fontFamily: '"Space Grotesk", sans-serif',
           fontWeight: 700,
           fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
@@ -25,7 +30,7 @@ export function Title({ children }: { children: React.ReactNode }) {
         }}
       >
         {children}
-      </h2>
+      </Typography.Title>
       <div
         style={{
           marginTop: "0.75rem",
@@ -35,7 +40,7 @@ export function Title({ children }: { children: React.ReactNode }) {
           background: token.colorPrimary,
         }}
       />
-    </div>
+    </Space>
   );
 }
 
@@ -55,7 +60,7 @@ export function BackToTop({ home }: { home: string }) {
   }, []);
 
   return (
-    <div
+    <Space
       style={{
         position: "fixed",
         bottom: "calc(var(--min-footer-height) + 1.5rem)",
@@ -67,6 +72,6 @@ export function BackToTop({ home }: { home: string }) {
       <Link to={home} className="link-icons">
         <Icon icon="fa6-solid:circle-chevron-up" style={{ color: token.colorText }}/>
       </Link>
-    </div>
+    </Space>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Element } from "react-scroll";
 import { Icon } from "@iconify/react";
 import { filteredProjects } from "../../data";
-import { Button, Flex, Grid, Spin, Typography, theme } from "antd";
+import { Button, Flex, Grid, Space, Spin, Typography, theme } from "antd";
 import { Title } from "./globalStyledComponents";
 import StyledCard from "./StyledCard";
 import { useGitHubRepos } from "../../hooks/useGitHubData";
@@ -28,8 +28,11 @@ export default function Projects() {
   return (
     <Element name={"Projects"} id="projects">
       <section className="section">
-        <div
+        <Space
+          vertical
+          size={0}
           style={{
+            display: "flex",
             width: "100%",
             padding: "0 2rem",
             maxWidth: 1200,
@@ -91,7 +94,7 @@ export default function Projects() {
               style={{ width: "100%" }}
             >
               {mainProjects.map((project) => (
-                <div
+                <Space
                   key={project.id}
                   style={{
                     width: screens.lg ? "31%" : screens.md ? "47%" : "100%",
@@ -105,11 +108,11 @@ export default function Projects() {
                     url={project.html_url}
                     demo={project.homepage}
                   />
-                </div>
+                </Space>
               ))}
             </Flex>
           )}
-        </div>
+        </Space>
       </section>
     </Element>
   );

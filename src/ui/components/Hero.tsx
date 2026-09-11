@@ -1,7 +1,7 @@
 import { Link } from "react-scroll";
 import { Icon } from "@iconify/react";
 import { Dark, heroTagline, Light } from "../../data";
-import { Flex, Grid, theme } from "antd";
+import { Flex, Grid, Typography, theme } from "antd";
 import SocialLinks from "./SocialLinks";
 import { useGitHubUser } from "../../hooks/useGitHubData";
 import { useUiStore } from "../../stores/useUiStore";
@@ -74,43 +74,45 @@ export default function Hero() {
           gap={20}
           style={{ maxWidth: 800 }}
         >
-          <h1
+          <Typography.Title
+            level={1}
             style={{
+              margin: 0,
               fontFamily: '"Space Grotesk", sans-serif',
               fontWeight: 700,
               fontSize: "clamp(2.5rem, 6vw, 4rem)",
               letterSpacing: "-0.03em",
               lineHeight: 1.1,
-              margin: 0,
               color: token.colorText,
               textAlign: "center",
             }}
           >
             {user?.name}
-          </h1>
+          </Typography.Title>
 
           {heroTagline && (
             <Flex vertical align="center" gap={8} style={{ maxWidth: 640 }}>
-              <p
+              <Typography.Paragraph
                 style={{
+                  margin: 0,
                   fontFamily: '"Space Grotesk", sans-serif',
                   fontSize: "clamp(1.3rem, 2.4vw, 1.65rem)",
                   fontWeight: 700,
                   color: isDark ? "#5EEAD4" : "#000000",
                   textAlign: "center",
                   lineHeight: 1.4,
-                  margin: 0,
                 }}
               >
                 {heroTagline.split(" | ")[0]}
-              </p>
+              </Typography.Paragraph>
               {heroTagline
                 .split(" | ")
                 .slice(1)
                 .map((line) => (
-                  <p
+                  <Typography.Paragraph
                     key={line}
                     style={{
+                      margin: 0,
                       fontFamily: '"Space Grotesk", sans-serif',
                       fontSize: "clamp(0.95rem, 1.8vw, 1.1rem)",
                       fontWeight: 500,
@@ -119,18 +121,18 @@ export default function Hero() {
                         : "rgba(28, 25, 23, 0.7)",
                       textAlign: "center",
                       lineHeight: 1.5,
-                      margin: 0,
                     }}
                   >
                     {line}
-                  </p>
+                  </Typography.Paragraph>
                 ))}
             </Flex>
           )}
 
           {user?.bio && (
-            <p
+            <Typography.Paragraph
               style={{
+                margin: 0,
                 fontFamily: '"Space Grotesk", sans-serif',
                 fontSize: "clamp(1rem, 2vw, 1.25rem)",
                 fontWeight: 400,
@@ -140,11 +142,10 @@ export default function Hero() {
                 textAlign: "center",
                 maxWidth: 520,
                 lineHeight: 1.5,
-                margin: 0,
               }}
             >
               {user.bio}
-            </p>
+            </Typography.Paragraph>
           )}
 
           <Flex align="center" justify="center" style={{ marginTop: "0.5rem" }}>

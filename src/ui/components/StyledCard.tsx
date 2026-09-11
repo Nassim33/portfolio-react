@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 import { gh } from "../assets";
-import { Card, Flex, Typography, theme } from "antd";
+import { Card, Flex, Space, Typography, theme } from "antd";
 
 const { Text, Link: AntLink } = Typography;
 
@@ -25,7 +25,7 @@ export default function StyledCard({
     <Card
       hoverable
       style={{
-        height: "var(--card-height)",
+        // height: "var(--card-height)",
         display: "flex",
         flexDirection: "column",
         border: `1px solid ${token.colorBorderSecondary}`,
@@ -66,11 +66,14 @@ export default function StyledCard({
         </Text>
       </Flex>
 
-      <div
+      <Space
+        size={0}
         style={{
+          display: "flex",
+          width: "100%",
           borderTop: `1px solid ${token.colorBorderSecondary}`,
           padding: "0.75rem",
-          textAlign: "center",
+          justifyContent: "center",
         }}
       >
         {demo && demo !== "" && (
@@ -89,7 +92,7 @@ export default function StyledCard({
         >
           GitHub <Icon icon="icomoon-free:github" />
         </AntLink>
-      </div>
+      </Space>
     </Card>
   );
 }

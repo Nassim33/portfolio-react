@@ -1,7 +1,7 @@
 import React from "react";
 import { Element } from "react-scroll";
 import { skillData, resume } from "../../data";
-import { Button, Flex, Grid, Typography, theme } from "antd";
+import { Button, Flex, Grid, Space, Typography, theme } from "antd";
 import { Title } from "./globalStyledComponents";
 
 const { useBreakpoint } = Grid;
@@ -55,8 +55,11 @@ export default function Skills() {
   return (
     <Element name={"Skills"} id="skills">
       <section className="section">
-        <div
+        <Space
+          vertical
+          size={0}
           style={{
+            display: "flex",
             width: "100%",
             padding: "0 2rem",
             maxWidth: 1200,
@@ -71,15 +74,15 @@ export default function Skills() {
             style={{ width: "100%" }}
           >
             {skillData.map((s) => (
-              <div key={s.id} style={{ width: `${getSpan()}%`, minWidth: 100 }}>
+              <Space key={s.id} style={{ width: `${getSpan()}%`, minWidth: 100 }}>
                 <SkillItem skill={s.skill} name={s.name} />
-              </div>
+              </Space>
             ))}
           </Flex>
 
           {resume && (
             <Flex justify="center" style={{ marginTop: "2rem" }}>
-              <a href={resume}>
+              <Typography.Link href={resume}>
                 <Button
                   size="large"
                   style={{
@@ -89,10 +92,10 @@ export default function Skills() {
                 >
                   R&eacute;sum&eacute;
                 </Button>
-              </a>
+              </Typography.Link>
             </Flex>
           )}
-        </div>
+        </Space>
       </section>
     </Element>
   );

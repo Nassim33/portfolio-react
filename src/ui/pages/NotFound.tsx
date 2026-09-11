@@ -23,7 +23,9 @@ export default function NotFound() {
       }}
     >
       <Flex align="center" justify="center" gap={8}>
-        <span style={{ fontSize: "5rem", color: token.colorText }}>4</span>
+        <Typography.Text style={{ fontSize: "5rem", color: token.colorText }}>
+          4
+        </Typography.Text>
         <img
           src={logo}
           alt="React Logo"
@@ -32,7 +34,9 @@ export default function NotFound() {
             animation: "spin-slow 20s linear infinite",
           }}
         />
-        <span style={{ fontSize: "5rem", color: token.colorText }}>4</span>
+        <Typography.Text style={{ fontSize: "5rem", color: token.colorText }}>
+          4
+        </Typography.Text>
       </Flex>
       <Typography.Paragraph
         style={{

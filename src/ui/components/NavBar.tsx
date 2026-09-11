@@ -1,6 +1,6 @@
 import { Link as ScrollLink } from "react-scroll";
 import { useLocation } from "react-router-dom";
-import { Drawer, Switch, theme } from "antd";
+import { Drawer, Space, Switch, Typography, theme } from "antd";
 import { MenuOutlined, SunOutlined, MoonOutlined } from "@ant-design/icons";
 import defaultNavLogo from "./defaultNavLogo.svg";
 import { useUiStore } from "../../stores/useUiStore";
@@ -132,20 +132,22 @@ function MobileDrawer() {
         <RouteNavLinks mobile />
       </nav>
 
-      <div
+      <Space
+        align="center"
         style={{
           padding: "0.875rem 1.5rem",
           borderTop: `1px solid ${token.colorBorderSecondary}`,
-          display: "flex",
-          alignItems: "center",
+          width: "100%",
           justifyContent: "space-between",
         }}
       >
-        <span style={{ color: token.colorText, fontSize: "0.9rem" }}>
+        <Typography.Text
+          style={{ color: token.colorText, fontSize: "0.9rem" }}
+        >
           {isDark ? "Dark" : "Light"} mode
-        </span>
+        </Typography.Text>
         <ThemeToggle onClick={closeExpanded} />
-      </div>
+      </Space>
     </Drawer>
   );
 }

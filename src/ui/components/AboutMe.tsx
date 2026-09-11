@@ -1,6 +1,6 @@
 import { Element } from "react-scroll";
 import { moreInfo } from "../../data";
-import { Flex, Grid, Typography, theme } from "antd";
+import { Flex, Grid, Space, Typography, theme } from "antd";
 import { Title } from "./globalStyledComponents";
 import { useGitHubUser } from "../../hooks/useGitHubData";
 
@@ -16,8 +16,11 @@ export default function AboutMe() {
   return (
     <Element name={"About"} id="about">
       <section className="section">
-        <div
+        <Space
+          vertical
+          size={0}
           style={{
+            display: "flex",
             width: "100%",
             padding: "0 2rem",
             maxWidth: 1200,
@@ -80,7 +83,7 @@ export default function AboutMe() {
               </Flex>
             )}
           </Flex>
-        </div>
+        </Space>
       </section>
     </Element>
   );

@@ -1,5 +1,5 @@
 import { Element } from "react-scroll";
-import { Flex } from "antd";
+import { Flex, Space } from "antd";
 import { Title } from "./globalStyledComponents";
 import ContactForm from "./ContactForm";
 
@@ -15,8 +15,11 @@ export default function Contact() {
           justifyContent: "center",
         }}
       >
-        <div
+        <Space
+          vertical
+          size={0}
           style={{
+            display: "flex",
             width: "100%",
             padding: "0 2rem",
             maxWidth: 1200,
@@ -28,7 +31,7 @@ export default function Contact() {
           <Flex vertical align="center" style={{ width: "100%" }}>
             <ContactForm />
           </Flex>
-        </div>
+        </Space>
       </section>
     </Element>
   );
